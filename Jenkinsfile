@@ -18,6 +18,7 @@ pipeline {
                     cd ..
                 """)
             }
+            }
 
         stage('Start test app') {
             steps {
@@ -26,11 +27,12 @@ pipeline {
                     ./scripts/test_container.ps1
                     """)
             }
-            post {
-                success {
+        }
+        post {
+            success {
                     echo "App started successfully :)"
                 }
-                failure {
+            failure {
                     echo "App failed to start :("
                 }
             }
